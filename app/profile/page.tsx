@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { Progress } from "@/components/ui/progress"
 import { StreakWidget } from "@/components/ui/streak-flame"
 import { 
-  Trophy, Star, Eye, MessageSquare, CheckCircle2, 
+  Flame, Trophy, Star, Eye, MessageSquare, CheckCircle2, 
   Briefcase, TrendingUp, ExternalLink, Building2
 } from "lucide-react"
 
