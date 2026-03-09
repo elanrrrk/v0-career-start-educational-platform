@@ -45,17 +45,19 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {isLoggedIn ? (
-            <>
-              <StreakFlame streak={userStreak} size="sm" />
-              <Link
-                href="/profile"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
-              >
-                <User className="h-5 w-5" />
-              </Link>
-            </>
-          ) : (
+          <Link
+            href="/streak"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-500/10 text-orange-500 transition-colors hover:bg-orange-500/20"
+          >
+            <Zap className="h-5 w-5 fill-current" />
+          </Link>
+          <Link
+            href="/profile"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
+          >
+            <User className="h-5 w-5" />
+          </Link>
+          {!isLoggedIn && (
             <>
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Войти</Link>
@@ -89,12 +91,30 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-4 flex flex-col gap-2">
-              <Button variant="outline" asChild>
-                <Link href="/login">Войти</Link>
-              </Button>
-              <Button className="bg-gradient-to-r from-primary to-accent" asChild>
-                <Link href="/register">Начать</Link>
-              </Button>
+              {!isLoggedIn && (
+                <>
+                  <Button variant="outline" asChild>
+                    <Link href="/login">Войти</Link>
+                  </Button>
+                  <Button className="bg-gradient-to-r from-primary to-accent" asChild>
+                    <Link href="/register">Начать</Link>
+                  </Button>
+                </>
+              )}
+              <div className="grid grid-cols-2 gap-2 pt-2">
+                <Button variant="ghost" className="gap-2 text-orange-500 hover:bg-orange-500/10" asChild>
+                  <Link href="/streak">
+                    <Zap className="h-4 w-4 fill-current" />
+                    Streak
+                  </Link>
+                </Button>
+                <Button variant="ghost" className="gap-2" asChild>
+                  <Link href="/profile">
+                    <User className="h-4 w-4" />
+                    Профиль
+                  </Link>
+                </Button>
+              </div>
             </div>
           </nav>
         </div>
