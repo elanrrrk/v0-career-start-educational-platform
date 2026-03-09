@@ -8,9 +8,10 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Progress } from "@/components/ui/progress"
+import { StreakWidget } from "@/components/ui/streak-flame"
 import { 
-  Flame, Trophy, Star, Eye, MessageSquare, CheckCircle2, 
-  Briefcase, TrendingUp, Calendar, ExternalLink, Building2
+  Trophy, Star, Eye, MessageSquare, CheckCircle2, 
+  Briefcase, TrendingUp, ExternalLink, Building2
 } from "lucide-react"
 
 const profileData = {
@@ -175,33 +176,12 @@ export default function ProfilePage() {
                   ))}
                 </div>
 
-                {/* Streak Tracker */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Flame className="h-5 w-5 text-orange-500" />
-                      Streak: {profileData.streak} дней подряд
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between">
-                      {streakDays.map((day) => (
-                        <div key={day.day} className="flex flex-col items-center gap-2">
-                          <div
-                            className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                              day.active
-                                ? "bg-gradient-to-br from-orange-500 to-red-500 text-white"
-                                : "bg-muted text-muted-foreground"
-                            }`}
-                          >
-                            {day.active ? <Flame className="h-5 w-5" /> : <Calendar className="h-4 w-4" />}
-                          </div>
-                          <span className="text-xs text-muted-foreground">{day.day}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Streak Tracker with Duolingo-style flame */}
+                <StreakWidget 
+                  streak={profileData.streak}
+                  maxStreak={21}
+                  weeklyActivity={streakDays.map(d => d.active)}
+                />
 
                 {/* Portfolio */}
                 <Card>

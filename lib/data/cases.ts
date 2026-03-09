@@ -8,6 +8,7 @@ export interface Case {
   description: string
   fullDescription: string
   deadline: Date
+  duration: string
   submissions: number
   points: number
   theory: { title: string; description: string; link: string }[]
@@ -39,6 +40,7 @@ export const cases: Case[] = [
 - Анимации переключения изображений
 - Оптимизация производительности`,
     deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    duration: "4-6 часов",
     submissions: 234,
     points: 100,
     theory: [
@@ -69,6 +71,7 @@ export const cases: Case[] = [
 - Recharts или D3.js
 - Работа с API`,
     deadline: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+    duration: "8-12 часов",
     submissions: 156,
     points: 200,
     theory: [
@@ -99,6 +102,7 @@ export const cases: Case[] = [
 - Дизайн-система
 - Dark и Light темы`,
     deadline: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
+    duration: "15-20 часов",
     submissions: 89,
     points: 300,
     theory: [
@@ -124,6 +128,7 @@ export const cases: Case[] = [
 - A/B тестирование гипотез
 - Подготовка презентации с выводами`,
     deadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+    duration: "6-10 часов",
     submissions: 178,
     points: 200,
     theory: [
@@ -155,6 +160,7 @@ export const cases: Case[] = [
 - Redis для кэширования
 - Docker`,
     deadline: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000),
+    duration: "20-30 часов",
     submissions: 67,
     points: 350,
     theory: [

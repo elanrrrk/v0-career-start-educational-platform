@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap } from "lucide-react"
+import { StreakFlame } from "@/components/ui/streak-flame"
+import { Menu, X, Zap, User } from "lucide-react"
 
 const navLinks = [
   { href: "/directions", label: "Направления" },
@@ -11,6 +12,10 @@ const navLinks = [
   { href: "/companies", label: "Компании" },
   { href: "/blog", label: "Блог" },
 ]
+
+// Mock auth state - in real app this would come from auth context
+const isLoggedIn = false
+const userStreak = 7
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -39,13 +44,27 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/login">Войти</Link>
-          </Button>
-          <Button size="sm" className="bg-gradient-to-r from-primary to-accent hover:opacity-90" asChild>
-            <Link href="/register">Начать</Link>
-          </Button>
+        <div className="hidden items-center gap-3 md:flex">
+          {isLoggedIn ? (
+            <>
+              <StreakFlame streak={userStreak} size="sm" />
+              <Link
+                href="/profile"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/20"
+              >
+                <User className="h-5 w-5" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/login">Войти</Link>
+              </Button>
+              <Button size="sm" className="bg-gradient-to-r from-primary to-accent hover:opacity-90" asChild>
+                <Link href="/register">Начать</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         <button
